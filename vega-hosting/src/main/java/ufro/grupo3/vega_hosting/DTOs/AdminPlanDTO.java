@@ -9,6 +9,7 @@ public class AdminPlanDTO {
     private String name;
     private Integer vcore;
     private Integer ram;
+    private Integer storage;
     private Integer bus;
     private Integer quantity;
     private Integer price;
