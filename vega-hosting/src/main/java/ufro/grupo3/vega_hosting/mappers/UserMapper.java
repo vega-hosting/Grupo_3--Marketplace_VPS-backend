@@ -1,6 +1,7 @@
 package ufro.grupo3.vega_hosting.mappers;
 
 import ufro.grupo3.vega_hosting.DTOs.UserDTO;
+import ufro.grupo3.vega_hosting.models.User;
 
 public class UserMapper {
 
