@@ -2,6 +2,8 @@ package ufro.grupo3.vega_hosting.mappers;
 
 
 
+import org.springframework.stereotype.Component;
+
 import lombok.RequiredArgsConstructor;
 import ufro.grupo3.vega_hosting.DTOs.SubscriptionDTO;
 import ufro.grupo3.vega_hosting.models.Plan;
@@ -10,6 +12,7 @@ import ufro.grupo3.vega_hosting.models.User;
 import ufro.grupo3.vega_hosting.repositories.PlanRepository;
 import ufro.grupo3.vega_hosting.repositories.UserRepository;
 
+@Component
 @RequiredArgsConstructor
 public class SubscriptionMapper {
 
@@ -55,7 +58,7 @@ public class SubscriptionMapper {
         orElseThrow(() -> new Exception("Plan not found with ID: " + subscriptionDTO.getPlanId()));
         subscription.setPlan(plan);
 
-        User user = userRepository.findById(subscriptionDTO.getId()).
+        User user = userRepository.findById(subscriptionDTO.getUserId()).
         orElseThrow(() -> new Exception("User not found with ID: " + subscriptionDTO.getUserId()));
         subscription.setUser(user);
 
