@@ -11,4 +11,5 @@ public class UserDTO {
     private String companyName;
     private String city;
     private String address;
+    private String password;
 }
