@@ -47,8 +47,121 @@ Ejecuta el siguiente comando para ejecutar el programa
 .\mvnw.cmd spring-boot:run
 ```
 
-## O
+**O**
 
 ```
 mvn spring-boot:run
+```
+
+# Endpoints
+
+## User
+
+- **GET /v1/api/users**: Recibe una lista de usuarios.
+
+**URL**:
+```
+http://localhost:8081/v1/api/users
+```
+
+- **GET /v1/api/users/{userId}**: Recibe un usuario por ID.
+
+**URL**:
+```
+http://localhost:8081/v1/api/users/{userId}
+```
+
+- **DELETE /v1/api/users/{userId}**: Elimina un usuario por ID.
+
+**URL**:
+```
+http://localhost:8081/v1/api/users/{userId}
+```
+
+- **POST /v1/api/users**: Crea un nuevo usuario.
+
+**URL**:
+```
+http://localhost:8081/v1/api/users
+```
+
+- **PUT /v1/api/users/{userId}**: Actualiza los datos de un usuario por ID.
+
+**URL**:
+```
+http://localhost:8081/v1/api/users/{userId}
+```
+
+## Plan
+
+- **GET /v1/api/plans/admin**: Recibe una lista de planes con los datos disponible para el administador.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/admin
+```
+
+- **GET /v1/api/plans/user**: Recibe una lista de planes con los datos disponible para el usuario.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/user
+```
+
+- **GET /v1/api/plans/admin/plan/{planId}**: Recibe un plan especifico mediante la ID de este, con los datos disponible para el administrador.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/admin/plan/{planId}
+```
+
+- **GET /v1/api/plans/user/plan/{planId}**: Recibe un plan especifico mediante la ID de este, con los datos disponible para el usuario.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/user/plan/{planId}
+```
+
+- **POST /v1/api/plans**: Crea un nuevo plan.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans
+```
+
+- **DELETE /v1/api/plans/{planId}**: Elimina un plan por ID.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/{planId}
+```
+
+- **PUT /v1/api/plans**: Actualiza los datos de un plan.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans
+```
+
+- **PUT /v1/api/plans/user/{planId}/reduce-quantity**: Actualiza el campo 'quantity' de un plan reduciendo una unidad.
+
+**URL**:
+```
+http://localhost:8081/v1/api/plans/user/{planId}/reduce-quantity
+```
+
+## Subscription
+
+- **GET v1/api/subscriptions/user/{userId}**: Recibe una lista de suscripciones por la ID de usuario.
+
+**URL**:
+```
+http://localhost:8081/v1/api/subscriptions/user/{userId}
+```
+
+- **POST v1/api/subscriptions**: Crea una nueva suscripcion.
+
+**URL**:
+```
+http://localhost:8081/v1/api/subscriptions
 ```
