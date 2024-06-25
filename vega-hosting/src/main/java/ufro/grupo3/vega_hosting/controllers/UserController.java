@@ -19,7 +19,7 @@ import ufro.grupo3.vega_hosting.DTOs.UserDTO;
 import ufro.grupo3.vega_hosting.services.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/v1/api/users")
 @CrossOrigin(origins = "http://localhost:8080")
 @RequiredArgsConstructor
 public class UserController {
