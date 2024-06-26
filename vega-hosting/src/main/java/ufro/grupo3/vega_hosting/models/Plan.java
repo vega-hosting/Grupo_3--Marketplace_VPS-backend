@@ -2,6 +2,7 @@ package ufro.grupo3.vega_hosting.models;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,6 +43,6 @@ public class Plan {
     @Column(name = "price", nullable = false, columnDefinition = "INT UNSIGNED")
     private Integer price;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
     private Set<Subscription> subscriptions;
 }
