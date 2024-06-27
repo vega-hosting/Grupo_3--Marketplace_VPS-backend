@@ -5,7 +5,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import ufro.grupo3.vega_hosting.DTOs.UserDTO;
 import ufro.grupo3.vega_hosting.mappers.UserMapper;
+import ufro.grupo3.vega_hosting.models.Subscription;
 import ufro.grupo3.vega_hosting.models.User;
+import ufro.grupo3.vega_hosting.repositories.SubscriptionRepository;
 import ufro.grupo3.vega_hosting.repositories.UserRepository;
 
 import java.util.List;
@@ -17,6 +19,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SubscriptionRepository subscriptionRepository;
 
     @Override
     public List<UserDTO> getAllUsers() throws Exception {
@@ -78,6 +82,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Integer id) throws Exception {
         try {
+            List<Subscription> subscriptions = subscriptionRepository.findByUserId(id);
+
+            if (subscriptions != null && !subscriptions.isEmpty()) {
+                for (Subscription subscription : subscriptions) {
+                    subscriptionRepository.delete(subscription);
+                }
+            }
             if (userRepository.existsById(id)) {
                 userRepository.deleteById(id);
             } else {
@@ -87,4 +98,5 @@ public class UserServiceImpl implements UserService {
             throw new Exception("Error deleting user: " + e.getMessage());
         }
     }
+
 }
