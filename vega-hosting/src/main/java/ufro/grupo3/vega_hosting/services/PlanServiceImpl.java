@@ -11,13 +11,16 @@ import ufro.grupo3.vega_hosting.DTOs.AdminPlanDTO;
 import ufro.grupo3.vega_hosting.DTOs.UserPlanDTO;
 import ufro.grupo3.vega_hosting.mappers.PlanMapper;
 import ufro.grupo3.vega_hosting.models.Plan;
+import ufro.grupo3.vega_hosting.models.Subscription;
 import ufro.grupo3.vega_hosting.repositories.PlanRepository;
+import ufro.grupo3.vega_hosting.repositories.SubscriptionRepository;
 
 @Service
 @AllArgsConstructor
 public class PlanServiceImpl implements PlanService {
 
     private final PlanRepository planRepository;
+    private final SubscriptionRepository subscriptionRepository;
 
     @Override
     public List<AdminPlanDTO> getAllPlansForAdmin() throws Exception {
@@ -63,6 +66,15 @@ public class PlanServiceImpl implements PlanService {
         if (!planRepository.existsById(id)) {
             throw new Exception("This plan doesn't exist!");
         }
+
+        List<Subscription> subscriptions = subscriptionRepository.findByPlanId(id);
+        
+        if (subscriptions != null) {
+            for (Subscription subscription : subscriptions) {
+                subscriptionRepository.delete(subscription);
+            }
+        }
+
         planRepository.deleteById(id);
     }
 
